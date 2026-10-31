@@ -198,7 +198,7 @@
       }
     } catch (err) {
       console.error(err);
-      errEl.textContent = "We couldn't reach the server. Make sure XAMPP is running.";
+      errEl.textContent = "We couldn't reach the server. Please check your connection and try again.";
       errEl.hidden = false;
     } finally {
       btn.disabled = false;
