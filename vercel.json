@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://ash-laundromat.onrender.com/api/:path*" },
+    { "source": "/admin/:path*", "destination": "https://ash-laundromat.onrender.com/admin/:path*" }
+  ]
+}

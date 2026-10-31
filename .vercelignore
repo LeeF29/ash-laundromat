@@ -1,0 +1,6 @@
+/api
+/admin
+/Dockerfile
+/.dockerignore
+/.gitignore
+/aiven-ca.pem
