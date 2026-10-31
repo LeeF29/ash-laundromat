@@ -7,9 +7,10 @@ RUN docker-php-ext-install pdo_mysql \
 # Production PHP settings: errors go to the log, not onto visitors' screens.
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-# Don't reveal the Apache version to visitors.
-RUN printf "ServerTokens Prod\nServerSignature Off\n" > /etc/apache2/conf-available/hide-version.conf \
-    && a2enconf hide-version
+# Don't reveal the Apache version to visitors. Debian's own security.conf sets these
+# and is read after any extra file we add, so it is edited directly.
+RUN sed -i 's/^ServerTokens .*/ServerTokens Prod/; s/^ServerSignature .*/ServerSignature Off/' \
+    /etc/apache2/conf-available/security.conf
 
 # Render tells the site which port to listen on through the PORT variable.
 ENV PORT=10000
