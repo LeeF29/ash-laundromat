@@ -1,0 +1,450 @@
+/* =====================================================================
+   mobile.css  |  Phone + small-tablet layout for the Ash Laundromat page
+
+   - Loaded AFTER style.css and account.css, so it only adds rules.
+   - Nothing in here changes a class name; it only re-sizes / re-stacks
+     the ones that already exist, and only on narrow screens.
+   - Desktop (wider than 900px) looks exactly as before.
+   ===================================================================== */
+
+
+/* ========= Menu button (only visible on phones, see the 900px block) ========= */
+
+.nav-toggle{
+    display: none;
+}
+
+
+/* =====================================================================
+   TABLET + PHONE  (900px and narrower)
+   ===================================================================== */
+
+@media (max-width: 900px){
+
+    /* ----- Navbar: logo on the left, menu button on the right ----- */
+
+    .nav-container{
+        min-height: 72px;
+        padding: 12px 20px;
+        gap: 12px;
+    }
+
+    .nav-logo img{
+        width: 104px;
+    }
+
+    .nav-toggle{
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        margin-left: auto;
+        background: var(--white);
+        border: 1px solid #e1f3fa;
+        border-radius: 14px;
+        box-shadow: 0 2px 8px rgba(0, 59, 115, 0.12);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-toggle span{
+        display: block;
+        width: 22px;
+        height: 2.5px;
+        border-radius: 2px;
+        background: var(--primary);
+        transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+
+    .nav-toggle.is-open span:nth-child(1){
+        transform: translateY(7.5px) rotate(45deg);
+    }
+
+    .nav-toggle.is-open span:nth-child(2){
+        opacity: 0;
+    }
+
+    .nav-toggle.is-open span:nth-child(3){
+        transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+    /* The links drop down as a card under the navbar */
+
+    .nav-menu{
+        display: none;
+        position: absolute;
+        top: calc(100% - 4px);
+        left: 16px;
+        right: 16px;
+        z-index: 50;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 4px;
+        margin-left: 0;
+        padding: 12px;
+        background: var(--white);
+        border: 1px solid #e1f3fa;
+        border-radius: 18px;
+        box-shadow: 0 16px 40px rgba(0, 59, 115, 0.18);
+    }
+
+    .nav-menu.is-open{
+        display: flex;
+        animation: ashMenuDrop 0.22s ease-out;
+    }
+
+    @keyframes ashMenuDrop{
+        from{ opacity: 0; transform: translateY(-8px); }
+        to{   opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-menu a{
+        display: block;
+        padding: 13px 14px;
+        border-radius: 12px;
+        font-size: 17px;
+    }
+
+    .nav-menu a.active{
+        background: #e8f6fc;
+    }
+
+    /* motion.js draws a little underline under desktop links; the menu card doesn't need it */
+    .nav-menu a:not(.nav-book)::after{
+        display: none;
+    }
+
+    .nav-menu .nav-book{
+        display: flex;
+        margin: 6px 0 0;
+        padding: 14px 20px;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    /* Logged-in customer: profile chip + Logout sit inside the card */
+
+    .nav-account{
+        margin-left: 0;
+        padding: 6px 4px;
+        justify-content: space-between;
+    }
+
+
+    /* ----- Hero: text on top, the picture below it ----- */
+
+    .dashboard{
+        min-height: 0;
+    }
+
+    .dashboard-content{
+        padding: 12px 22px 0;
+        align-items: flex-start;
+    }
+
+    .main-logo img{
+        width: 190px;
+    }
+
+    .main-content h1{
+        font-size: clamp(34px, 9.5vw, 46px);
+    }
+
+    .desci{
+        font-size: 17px;
+        margin-bottom: 26px;
+    }
+
+    .dashboard-actions{
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .btn{
+        padding: 15px 24px;
+        font-size: 16px;
+    }
+
+    .commitment{
+        gap: 10px 18px;
+    }
+
+    .commitment-item{
+        font-size: 14px;
+    }
+
+
+    /* ----- Hero picture: text first, the girl picture sits underneath ----- */
+
+    .dashboard{
+        --hero-pic-w: 112vw;
+        background-color: #cfeefd;
+    }
+
+    .dashboard,
+    .dashboard .ash-hero-bg{
+        background-size: var(--hero-pic-w) auto;
+        background-position: 100% 100%;
+    }
+
+    .dashboard-content{
+        padding-bottom: calc(var(--hero-pic-w) * 0.5625 - 10px);
+    }
+
+    /* Soft fade where the top of the picture meets the sky colour above it,
+       so there is no hard line behind the buttons */
+    .dashboard::before{
+        background:
+            linear-gradient(
+                to top,
+                rgba(207, 238, 253, 0) calc(var(--hero-pic-w) * 0.5625 - 120px),
+                #cfeefd calc(var(--hero-pic-w) * 0.5625 - 4px)
+            ),
+            linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+    }
+
+    /* ----- Why Choose ASH + benefits + booking steps ----- */
+
+    .about-container,
+    .services-container{
+        padding: 0 20px;
+    }
+
+    .service-benefits{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .booking-steps{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 20px;
+    }
+
+    .booking-steps::before{
+        display: none;
+    }
+
+    .service-sub-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* ----- Price List: the form on top, the estimated total under it ----- */
+
+    .price-layout{
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .summary-card{
+        position: static;
+    }
+
+
+    /* ----- Footer ----- */
+
+    .footer-grid{
+        grid-template-columns: minmax(0, 1fr);
+        gap: 36px;
+    }
+}
+
+
+/* =====================================================================
+   PHONE  (640px and narrower)
+   ===================================================================== */
+
+@media (max-width: 640px){
+
+    /* ----- Section spacing + headings ----- */
+
+    .about-section,
+    .services,
+    .track-order,
+    .price-section,
+    .history-section,
+    .reviews-section,
+    .faq-section,
+    .contact-section{
+        padding-top: 56px;
+        padding-bottom: 56px;
+    }
+
+    /* ----- Why Choose ASH: three cards stack ----- */
+
+    .ash-highlights{
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .highlights-card{
+        min-height: 0;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 16px;
+        padding: 18px;
+    }
+
+    .highlights-card img{
+        width: 84px;
+        height: 84px;
+        flex-shrink: 0;
+    }
+
+    .highlights-card h3{
+        margin: 0;
+    }
+
+    .highlights-card > h3,
+    .highlights-card > p{
+        flex: 1 1 0;
+    }
+
+    /* ----- Four steps: one under the other ----- */
+
+    .booking-steps{
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    /* ----- Services cards ----- */
+
+    .grid-services{
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .services-card{
+        padding: 20px;
+    }
+
+    /* ----- Track Order: the box and the button stay on one line, a little tighter ----- */
+
+    .trackorder-input{
+        padding: 14px 16px;
+    }
+
+    .trackorder-btn{
+        padding: 12px 16px;
+    }
+
+    /* ----- Price List form ----- */
+
+    .field-grid{
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .booking-card{
+        padding: 20px 16px;
+    }
+
+    .add-item{
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .add-item-main{
+        grid-column: 1 / -1;
+    }
+
+    .add-item-fields{
+        flex-wrap: wrap;
+    }
+
+    .added-items-tablewrap{
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pickup-field{
+        max-width: none;
+    }
+
+    /* ----- Order history table scrolls sideways instead of squeezing ----- */
+
+    .history-table-wrap{
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* ----- Contact ----- */
+
+    .contact-form{
+        padding: 22px 18px;
+        flex: 1 1 100%;
+        max-width: none;
+    }
+
+    /* ----- Ready for fresh laundry banner ----- */
+
+    .banner-actions{
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .banner-btn{
+        padding: 18px 28px;
+        font-size: 17px;
+    }
+
+    /* ----- Footer ----- */
+
+    .footer-links{
+        margin-top: 28px;
+        gap: 14px 22px;
+    }
+}
+
+
+/* =====================================================================
+   NARROW PHONES  (480px and narrower)
+   ===================================================================== */
+
+@media (max-width: 480px){
+
+    /* The hero picture is bigger on a narrow phone so the girl stays a good size */
+    .dashboard{
+        --hero-pic-w: 190vw;
+    }
+}
+
+
+/* =====================================================================
+   SMALL PHONES  (400px and narrower)
+   ===================================================================== */
+
+@media (max-width: 400px){
+
+    .nav-container{
+        padding: 10px 16px;
+    }
+
+    .dashboard-content{
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .dashboard-actions .btn{
+        flex: 1 1 100%;
+    }
+
+    .highlights-card img{
+        width: 72px;
+        height: 72px;
+    }
+
+    .service-benefits{
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+
+/* ========= Don't let the menu drop animation run for people who turned motion off ========= */
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce){
+    .nav-menu.is-open{
+        animation: none;
+    }
+}

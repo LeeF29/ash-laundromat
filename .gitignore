@@ -1,0 +1,25 @@
+# ===== Database exports and backups (contain customer data) =====
+*.sql
+*.sql.gz
+*.zip
+*.bak
+
+# ===== Secrets and keys =====
+.env
+.env.*
+*.key
+*.pem
+!aiven-ca.pem
+config.local.php
+
+# ===== One-time setup script: must never be deployed =====
+**/setup-create-admin.php
+
+# ===== Tool and system files =====
+.vercel/
+node_modules/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

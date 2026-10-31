@@ -1,0 +1,608 @@
+/* ========= Global Styles ========= */
+
+:root {
+    --primary: #003b73;
+    --secondary: #00a8e8;
+    --text: #4a5565;
+    --yellow: #ffd166;
+    --white: #ffffff;
+}
+
+.icon-img-lg{
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.lg-icon-img{
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+/* ========= Makes the password toggle icon look faded when the password is visible  ========= */
+
+.pw-toggle[aria-pressed="true"]{
+    opacity: 0.45;
+}
+ 
+[hidden]{
+    display: none !important;
+}
+
+/* =========  Customer Access dialog  ========= */
+
+.auth-dialog{
+    width: min(440px, calc(100% - 32px));
+    max-height: calc(100vh - 32px);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 16px;
+    background: var(--white);
+    box-shadow: 0 20px 60px rgba(0, 59, 115, 0.3);
+    overflow: hidden auto;
+}
+
+/* =========  Adds a semi-transparent blue overlay behind the Customer Access dialog  ========= */
+
+.auth-dialog::backdrop{
+    background: rgba(0, 59, 115, 0.45);
+}
+
+.auth-banner{
+    position: relative;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 32px 28px 28px;
+    text-align: center;
+    color: var(--white);
+}
+
+.auth-close{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 0;
+    border-radius: 8px;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.auth-lock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 14px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+}
+
+.auth-banner h3{
+    font-family: "Outfit", sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.auth-banner p{
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 6px 0 0;
+}
+
+.auth-body{
+    padding: 24px 28px 28px;
+}
+
+.auth-tabs{
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: #f5fafd;
+    border-radius: 10px;
+}
+
+.auth-tabs button{
+    flex: 1;
+    padding: 9px 12px;
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    color: var(--text);
+    font: 600 13px "Inter", sans-serif;
+    cursor: pointer;
+}
+
+.auth-tabs button.is-active{
+    background: var(--white);
+    color: var(--primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.auth-form label{
+    display: block;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.auth-form input,
+.auth-form select{
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 11px 14px;
+    background: #f5fafd;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: var(--primary);
+    font: 500 13px "Inter", sans-serif;
+}
+
+.auth-form input:focus,
+.auth-form select:focus{
+    outline: none;
+    background: var(--white);
+    border-color: var(--secondary);
+}
+
+.auth-form label small{
+    display: block;
+    margin-top: 4px;
+    color: var(--text);
+}
+
+.pw-wrap{
+    position: relative;
+}
+
+.pw-wrap input{
+    padding-right: 42px;
+}
+
+.pw-toggle{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    background: none;
+    transform: translateY(-50%);
+    padding: 4px;
+    border: 0;
+    cursor: pointer;
+}
+
+.auth-optional{
+    padding: 12px 14px 14px;
+    border: 1px dashed #cfe3ef;
+    border-radius: 10px;
+}
+
+.auth-optional legend{
+    padding: 0 6px;
+    color: var(--secondary);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.auth-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.auth-error{
+    margin: 0;
+    padding: 10px 14px;
+    background: #fef2f2;
+    border-radius: 8px;
+    color: #b91c1c;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.auth-switch{
+    margin: -2px 0 0;
+    text-align: center;
+    color: var(--text);
+    font-size: 12px;
+}
+
+.link-btn{
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--secondary);
+    font: 700 12px "Inter", sans-serif;
+    cursor: pointer;
+}
+
+.btn-create{
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    background: var(--secondary);
+    border: 0;
+    border-radius: 10px;
+    color: var(--white);
+    font: 700 14px "Inter", sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-create:hover{
+    background: #008fc7;
+}
+ 
+.btn-create:disabled{
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* ========= Customer Logged-in navbar ========= */
+
+.nav-account{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: 20px;
+}
+ 
+.nav-chip{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px 6px 6px;
+    background: #e1f3fa;
+    border-radius: 999px;
+}
+ 
+.nav-avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: var(--secondary);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+ 
+.nav-chip-name{
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+ 
+.nav-gear{
+    display: flex;
+    padding: 3px;
+    background: none;
+    border: 0;
+    color: var(--primary);
+    cursor: pointer;
+}
+ 
+.nav-logout{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 0;
+    color: var(--text);
+    font: 600 14px "Inter", sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+}
+ 
+.nav-logout:hover{
+    color: var(--primary);
+}
+ 
+/* ========= Welcome badge (hero) ========= */
+ 
+.welcome-badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px 8px 8px;
+    margin-bottom: 16px;
+    background: var(--white);
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+ 
+.welcome-badge .nav-avatar{
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+}
+ 
+/* ========= My Profile drawer ========= */
+ 
+.drawer-overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0, 59, 115, 0.45);
+}
+ 
+.profile-drawer{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(400px, 100%);
+    background: var(--white);
+    box-shadow: -20px 0 60px rgba(0, 59, 115, 0.25);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.28s ease;
+}
+ 
+.profile-drawer.is-open{
+    transform: translateX(0);
+}
+ 
+.drawer-header{
+    position: relative;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 32px 24px 24px;
+    color: var(--white);
+}
+ 
+.drawer-close{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 0;
+    border-radius: 8px;
+    color: var(--white);
+    cursor: pointer;
+}
+ 
+.drawer-avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: var(--white);
+    font-family: "Outfit", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+ 
+.drawer-header h3{
+    margin: 12px 0 0;
+    font-family: "Outfit", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+}
+ 
+.drawer-header p{
+    margin: 2px 0 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+}
+ 
+.drawer-body{
+    padding: 20px 24px 28px;
+}
+ 
+.drawer-body-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+ 
+.drawer-body-top h4{
+    color: var(--primary);
+    font-family: "Outfit", sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0;
+}
+ 
+.btn-edit{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    background: #e1f3fa;
+    border: 0;
+    border-radius: 999px;
+    color: var(--primary);
+    font: 700 12px "Inter", sans-serif;
+    cursor: pointer;
+}
+ 
+.drawer-pending{
+    margin: 14px 0 0;
+    padding: 10px 14px;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 8px;
+    color: #92400e;
+    font-size: 12px;
+    line-height: 1.5;
+}
+ 
+.drawer-field{
+    margin-top: 18px;
+}
+ 
+.drawer-field label{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+ 
+.drawer-value{
+    display: block;
+    padding: 11px 14px;
+    background: #f5fafd;
+    border-radius: 10px;
+    color: rgba(0, 59, 115, 0.85);
+    font-size: 13px;
+    font-weight: 500;
+}
+ 
+.drawer-input{
+    display: block;
+    width: 100%;
+    padding: 11px 14px;
+    background: #f5fafd;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: var(--primary);
+    font: 500 13px "Inter", sans-serif;
+}
+ 
+.drawer-input:focus{
+    outline: none;
+    background: var(--white);
+    border-color: var(--secondary);
+}
+ 
+.drawer-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+ 
+.drawer-row small{
+    display: block;
+    color: var(--text);
+    font-size: 11px;
+    margin-bottom: 6px;
+}
+ 
+.drawer-note{
+    margin: 18px 0 0;
+    padding: 10px 14px;
+    background: #eef7fc;
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1.5;
+}
+ 
+.drawer-error{
+    margin: 12px 0 0;
+    padding: 10px 14px;
+    background: #fef2f2;
+    border-radius: 8px;
+    color: #b91c1c;
+    font-size: 12px;
+    font-weight: 500;
+}
+ 
+.drawer-actions{
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+ 
+.btn-cancel{
+    flex: 1;
+    padding: 12px;
+    background: #f3f4f6;
+    border: 0;
+    border-radius: 10px;
+    color: var(--primary);
+    font: 700 13px "Inter", sans-serif;
+    cursor: pointer;
+}
+ 
+.drawer-actions .btn-create{
+    flex: 1;
+}
+ 
+.drawer-signout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 26px;
+    padding: 12px;
+    background: none;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    color: #dc2626;
+    font: 700 13px "Inter", sans-serif;
+    cursor: pointer;
+}
+ 
+.drawer-signout:hover{
+    background: #fef2f2;
+}
+
+/* ========= Customer Access dialog: its own button styles =========
+   These only apply inside the login / create-account forms, so the booking page's
+   "Create Laundry Order" button (.btn-create in style.css) can change without touching them. */
+
+.auth-form button[type="submit"]{
+    display: block;
+    width: 100%;
+    margin: 4px 0 0;
+    padding: 14px 20px;
+    background: var(--secondary);
+    border: 0;
+    border-radius: 10px;
+    color: var(--white);
+    font: 700 14px "Inter", sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.auth-form button[type="submit"]:hover{
+    background: #008fc7;
+}
+
+.auth-form button[type="submit"]:disabled{
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* "Create one free" / "Log in" text links under each form */
+
+.auth-switch button{
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--secondary);
+    font: 700 12px "Inter", sans-serif;
+    cursor: pointer;
+}
+
+.auth-switch button:hover{
+    text-decoration: underline;
+}
